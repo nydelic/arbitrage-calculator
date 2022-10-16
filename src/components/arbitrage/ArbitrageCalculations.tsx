@@ -62,12 +62,22 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
           </button>
         </li>
       </ul>
-      <p className="mb-3 font-light text-zinc-500 dark:text-zinc-400">
-        Bets are {MathRoundList(betsToTake, 2).join(" | ")} <br />
+      <p className="font-light text-zinc-500 dark:text-zinc-400">
+        <div className="mb-2">
+          Bets are {MathRoundList(betsToTake, 2).join(" | ")}
+        </div>
         {profits.map((profit, winnerIndex) => (
           <Fragment key={winnerIndex}>
-            Profit if winner is {winnerIndex}: {MathRound(profit, 2)}
-            <br />
+            <div className="mb-2">
+              Profit if winner is {winnerIndex + 1}:{" "}
+              <span
+                className={`dark:bg-zinc-800 px-2 py-1 rounded-sm ${
+                  profit >= 0 ? "text-emerald-500" : "text-rose-500"
+                }`}
+              >
+                {MathRound(profit, 2)}
+              </span>
+            </div>
           </Fragment>
         ))}
       </p>

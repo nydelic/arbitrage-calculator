@@ -14,6 +14,12 @@ const Home: NextPage = () => {
       <Head>
         <title>Arbitrage calculator</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content={
+            "An advanced arbitrage calculator with support for weighted biases and automatically finding the best odds from a list of odds. Commonly used in sports betting."
+          }
+        />
       </Head>
       <div className="mx-auto max-w-2xl">
         <div className="py-6 px-8 bg-zinc-100 dark:bg-zinc-900 rounded-lg my-8">
