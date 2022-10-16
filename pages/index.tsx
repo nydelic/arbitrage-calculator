@@ -56,6 +56,11 @@ const Home: NextPage = () => {
         >
           like <span className="text-3xl">👍🏻</span>
         </button>
+        <div className="text-xs opacity-50 max-w-md mx-auto">
+          (<strong>message from the dev</strong>: Pressing this button will
+          inform me whether this tool is used. If it gains traction I might
+          offer new features such as providing it as a browser extension)
+        </div>
         <br />
         <br />
       </div>
