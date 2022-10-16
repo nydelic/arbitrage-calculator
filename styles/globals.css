@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent-color: 0 145 255;
+    --accent-color-light: 85 204 255;
+
+    --shade-900: 33 38 39;
+  }
+  body {
+    @apply text-shade-900;
+    font-family: "Sora", sans-serif;
+  }
+}
+@layer components {
+}
