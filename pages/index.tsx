@@ -5,7 +5,7 @@ import ArbitrageCalculations from "../src/components/arbitrage/ArbitrageCalculat
 import ArbitrageCalculationsErrorBoundary from "../src/components/arbitrage/ArbitrageCalculationsErrorBoundary";
 import ArbitrageForm from "../src/components/arbitrage/ArbitrageForm";
 import useArbitrageForm from "../src/hooks/useArbitrageForm";
-import { track } from "insights-js";
+import { track, parameters } from "insights-js";
 import { useState } from "react";
 
 const Home: NextPage = () => {
@@ -42,7 +42,14 @@ const Home: NextPage = () => {
           onClick={(e) => {
             e.preventDefault();
 
-            track({ id: "liked-page", unique: true });
+            track({
+              id: "liked-page",
+              unique: true,
+              parameters: {
+                locale: parameters.locale(),
+                referrer: parameters.referrer(),
+              },
+            });
 
             setHasLiked(true);
           }}
