@@ -15,4 +15,7 @@
   }
 }
 @layer components {
+  input {
+    @apply border rounded-md mb-4 py-1 px-3;
+  }
 }

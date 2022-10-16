@@ -6,7 +6,7 @@ function simulateManyBets(
   startBalance: number,
   calculations: ReturnType<typeof calculateEverything>
 ) {
-  const { chances, betsToTake, profits, bestOdds } = calculations;
+  const { betsToTake, bestOdds } = calculations;
 
   let fluidBalance = startBalance;
 
