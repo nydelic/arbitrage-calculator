@@ -12,6 +12,8 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
   const {
     control,
     register,
+    getValues,
+    setValue,
     formState: { errors },
   } = useArbitrageFormContext();
   const {
@@ -55,6 +57,22 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
                       className="block absolute right-0 top-0 h-full px-2 text-zinc-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
                       onClick={(e) => {
                         e.preventDefault();
+                        const currentBiases = getValues("biasConfig");
+                        if (currentBiases.length >= providedOddFields.length) {
+                          const newBiases = Array.from(
+                            new Array(providedOddFields.length - 1).keys()
+                          ).map((newBias, index) => {
+                            if (typeof currentBiases[index] === "number") {
+                              return currentBiases[index];
+                            }
+                            return 100;
+                          });
+
+                          setValue("biasConfig", newBiases, {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          });
+                        }
                         remove(oIndex);
                       }}
                     >
@@ -79,6 +97,22 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
         className="block ml-2 top-0 p-2 h-f text-zinc-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
         onClick={(e) => {
           e.preventDefault();
+          const currentBiases = getValues("biasConfig");
+          if (currentBiases.length <= providedOddFields.length) {
+            const newBiases = Array.from(
+              new Array(providedOddFields.length + 1).keys()
+            ).map((newBias, index) => {
+              if (typeof currentBiases[index] === "number") {
+                return currentBiases[index];
+              }
+              return 100;
+            });
+
+            setValue("biasConfig", newBiases, {
+              shouldDirty: true,
+              shouldValidate: true,
+            });
+          }
           append(1);
         }}
       >
