@@ -6,9 +6,13 @@ import Input from "../Input";
 
 interface ArbitrageOddFieldsProps {
   providerIndex: number;
+  // onRemoveAll: () => void;
 }
 
-function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
+function ArbitrageOddFields({
+  // onRemoveAll,
+  providerIndex,
+}: ArbitrageOddFieldsProps) {
   const {
     control,
     register,
@@ -27,8 +31,8 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
     name: `providedOdds.${providerIndex}.odds` as any,
   });
   return (
-    <div className="relative">
-      <div className="overflow-auto">
+    <div className="relative flex">
+      <div className="overflow-auto w-full">
         <div className="flex flex-wrap -m-1">
           {providedOddFields.map((providedOddField, oIndex) => (
             <div
@@ -38,6 +42,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
               <div className="flex flex-col">
                 <div className="relative">
                   <Input
+                    // className="[&_input]:max-w-[5rem]"
                     {...register(
                       `providedOdds.${providerIndex}.odds.${oIndex}`,
                       {
@@ -73,7 +78,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
       </div>
       <button
         type="button"
-        className="block absolute left-full ml-2 top-0 p-2 text-slate-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
+        className="block ml-2 top-0 p-2 h-f text-slate-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
         onClick={(e) => {
           e.preventDefault();
           append(1);
@@ -81,6 +86,18 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
       >
         <AiOutlinePlusCircle />
       </button>
+      {/* <div className="flex flex-col">
+        <button
+          type="button"
+          className="block ml-2 top-0 p-2 h-f text-slate-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
+          onClick={(e) => {
+            e.preventDefault();
+            onRemoveAll();
+          }}
+        >
+          <AiOutlineCloseCircle />
+        </button>
+      </div> */}
     </div>
   );
 }
