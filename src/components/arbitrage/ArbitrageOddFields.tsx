@@ -31,12 +31,17 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
   return (
     <div className="relative flex">
       <div className="overflow-hidden w-full">
-        <div className="flex flex-wrap -m-1">
+        <div
+          className="grid gap-2"
+          style={{
+            gridTemplateColumns: `repeat(${Math.min(
+              5,
+              providedOddFields.length
+            )}, 1fr)`,
+          }}
+        >
           {providedOddFields.map((providedOddField, oIndex) => (
-            <div
-              key={`${providedOddField.id}-${providerIndex}`}
-              className="m-1 flex-shrink flex-grow"
-            >
+            <div key={`${providedOddField.id}-${providerIndex}`}>
               <div className="flex flex-col">
                 <div className="relative">
                   <Input
