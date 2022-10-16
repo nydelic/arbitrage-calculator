@@ -92,7 +92,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
                       `providedOdds.${providerIndex}.odds.${oIndex}`,
                       {
                         valueAsNumber: true,
-                        required: "This value is required and cannot be empty",
+                        required: "required",
                       }
                     )}
                     min="0"

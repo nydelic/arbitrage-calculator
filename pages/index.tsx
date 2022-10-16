@@ -5,9 +5,12 @@ import ArbitrageCalculations from "../src/components/arbitrage/ArbitrageCalculat
 import ArbitrageCalculationsErrorBoundary from "../src/components/arbitrage/ArbitrageCalculationsErrorBoundary";
 import ArbitrageForm from "../src/components/arbitrage/ArbitrageForm";
 import useArbitrageForm from "../src/hooks/useArbitrageForm";
+import { track } from "insights-js";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   const arbitrageForm = useArbitrageForm();
+  const [hasLiked, setHasLiked] = useState(false);
 
   return (
     <>
@@ -30,6 +33,24 @@ const Home: NextPage = () => {
             </ArbitrageCalculationsErrorBoundary>
           </FormProvider>
         </div>
+      </div>
+      <div className="text-center">
+        <button
+          type="button"
+          disabled={hasLiked}
+          className="disabled:opacity-50"
+          onClick={(e) => {
+            e.preventDefault();
+
+            track({ id: "liked-page" });
+
+            setHasLiked(true);
+          }}
+        >
+          like <span className="text-3xl">👍🏻</span>
+        </button>
+        <br />
+        <br />
       </div>
     </>
   );

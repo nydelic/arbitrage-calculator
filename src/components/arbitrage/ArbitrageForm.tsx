@@ -108,7 +108,7 @@ function ArbitrageForm({}: ArbitrageFormProps) {
                   key={bIndex}
                   {...register(`biasConfig.${bIndex}`, {
                     valueAsNumber: true,
-                    required: "This value is required and cannot be empty",
+                    required: "required",
                   })}
                   min="0"
                   type="range"
