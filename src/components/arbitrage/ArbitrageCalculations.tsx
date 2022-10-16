@@ -62,7 +62,7 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
           </button>
         </li>
       </ul>
-      <p className="font-light text-zinc-500 dark:text-zinc-400">
+      <div className="font-light text-zinc-500 dark:text-zinc-400">
         <div className="mb-2">
           Bets are {MathRoundList(betsToTake, 2).join(" | ")}
         </div>
@@ -80,7 +80,7 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
             </div>
           </Fragment>
         ))}
-      </p>
+      </div>
     </div>
   );
 }

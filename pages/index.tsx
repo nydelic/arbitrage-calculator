@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         />
       </Head>
       <div className="mx-auto max-w-2xl">
-        <div className="py-6 px-8 bg-zinc-100 dark:bg-zinc-900 rounded-lg my-8">
+        <div className="py-6 px-8 bg-zinc-100 dark:bg-zinc-900 rounded-lg md:my-8">
           <FormProvider {...arbitrageForm}>
             <ArbitrageForm />
             <ArbitrageCalculationsErrorBoundary>
