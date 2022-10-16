@@ -42,7 +42,7 @@ const Home: NextPage = () => {
           onClick={(e) => {
             e.preventDefault();
 
-            track({ id: "liked-page" });
+            track({ id: "liked-page", unique: true });
 
             setHasLiked(true);
           }}
