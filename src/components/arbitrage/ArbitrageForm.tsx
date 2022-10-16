@@ -68,7 +68,10 @@ function ArbitrageForm({}: ArbitrageFormProps) {
             className="text-sm my-1 text-zinc-300 border border-transparent hover:text-emerald-500 hover:underline -mb-2 inline-flex items-center"
             onClick={(e) => {
               e.preventDefault();
-              append({ odds: [1, 2, 3] });
+              const lastProvider =
+                providedOddsFields[providedOddsFields.length - 1];
+
+              append({ odds: [...lastProvider.odds] });
             }}
           >
             <AiOutlinePlusCircle className="mr-1" /> Add provider
