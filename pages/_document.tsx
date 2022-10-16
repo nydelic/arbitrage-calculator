@@ -4,14 +4,10 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
-          rel="stylesheet"
+        <meta
+          name="google-site-verification"
+          content="y35T-MQPiLA60YikU87IUrwbtHT7pRi_5suwf-bejIg"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sora&display=swap"
-          rel="stylesheet"
-        /> */}
       </Head>
       <body>
         <Main />
