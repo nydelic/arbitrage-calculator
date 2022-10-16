@@ -15,13 +15,15 @@ const Home: NextPage = () => {
         <title>Arbitrage calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="mx-auto max-w-2xl py-10 px-8">
-        <FormProvider {...arbitrageForm}>
-          <ArbitrageForm />
-          <ArbitrageCalculationsErrorBoundary>
-            <ArbitrageCalculations />
-          </ArbitrageCalculationsErrorBoundary>
-        </FormProvider>
+      <div className="mx-auto max-w-2xl">
+        <div className="py-6 px-8 bg-zinc-100 dark:bg-zinc-900 rounded-lg my-8">
+          <FormProvider {...arbitrageForm}>
+            <ArbitrageForm />
+            <ArbitrageCalculationsErrorBoundary>
+              <ArbitrageCalculations />
+            </ArbitrageCalculationsErrorBoundary>
+          </FormProvider>
+        </div>
       </div>
     </>
   );

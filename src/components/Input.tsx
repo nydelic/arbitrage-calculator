@@ -10,10 +10,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function InputInner(
 ) {
   return (
     <span className={className}>
-      {label && <label>{label}</label>}
+      {label && <label className="text-sm font-medium">{label}</label>}
       <input
         {...inputProps}
-        className="border rounded-md py-1 px-3 block placeholder:text-slate-100/40 w-full"
+        className="border rounded-md py-1 px-3 block placeholder:text-zinc-300/50 w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-600"
         ref={ref}
       />
     </span>

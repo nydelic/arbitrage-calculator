@@ -25,7 +25,9 @@ function ArbitrageForm({}: ArbitrageFormProps) {
 
   return (
     <form className="mb-4">
-      <h1 className="text-center text-3xl">Arbitrage calculator</h1>
+      <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-zinc-900 dark:text-white">
+        Arbitrage calculator
+      </h1>
       <div className="mb-4">
         <Input
           label="Budget"
@@ -38,8 +40,8 @@ function ArbitrageForm({}: ArbitrageFormProps) {
           placeholder="enter budget"
         />
       </div>
-      <label>Provider odds</label>
-      <div className="rounded-md p-2 border mb-4">
+      <label className="text-sm font-medium">Provider odds</label>
+      <div className="rounded-md p-2 border mb-4 bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-600">
         <div>
           {providedOddsFields.map((providedOddsField, pIndex) => (
             <div key={providedOddsField.id} className="mb-2 last:mb-0">
@@ -80,24 +82,29 @@ function ArbitrageForm({}: ArbitrageFormProps) {
         </div>
       </div>
       <div>
-        <input
-          id="enableBias"
-          className="mr-1 cursor-pointer"
-          type="checkbox"
-          {...register("enableBias")}
-        />
-        <label htmlFor="enableBias" className="select-none cursor-pointer">
-          Bias
+        <label
+          htmlFor="enableBias"
+          className="inline-flex relative items-center cursor-pointer"
+        >
+          <input
+            id="enableBias"
+            className="sr-only peer"
+            type="checkbox"
+            {...register("enableBias")}
+          />
+          <div className="w-11 h-6 bg-zinc-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-accent-color-300 dark:peer-focus:ring-accent-color-800 rounded-full peer dark:bg-zinc-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-zinc-600 peer-checked:bg-accent-color-600"></div>
+          <span className="ml-3 text-sm font-medium">Bias</span>
         </label>
       </div>
-      <div className="rounded-md p-2 border mb-4">
+      <div className="rounded-md p-2 border mb-4 bg-zinc-50 dark:bg-zinc-800 dark:border-zinc-600">
         <Controller
           control={control}
           name="biasConfig"
           render={({ field }) => (
             <div className={enableBias ? "" : "opacity-50 pointer-events-none"}>
               {field.value.map((biasField, bIndex) => (
-                <Input
+                <input
+                  className="w-full h-1 bg-zinc-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-zinc-700"
                   key={bIndex}
                   {...register(`biasConfig.${bIndex}`, {
                     valueAsNumber: true,

@@ -30,22 +30,24 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
 
   return (
     <div>
-      <h2 className="text-center text-lg">Results</h2>
-      <ul className="list-disc ml-3">
-        <li className="text-zinc-300 text-sm">
+      <h2 className="mb-4 text-xl font-extrabold tracking-tight leading-none text-zinc-900 dark:text-white">
+        Results
+      </h2>
+      <ul className="list-disc ml-3 mb-4">
+        <li className="text-zinc-300 dark:text-zinc-500 text-sm">
           Available margin is {MathRound(availableWinMargin, 2)}
         </li>
-        <li className="text-zinc-300 text-sm">
+        <li className="text-zinc-300 dark:text-zinc-500 text-sm">
           Best odds are {MathRoundList(bestOdds, 1).join(" | ")} <br />
         </li>
-        <li className="text-zinc-300 text-sm">
+        {/* <li className="text-zinc-300 dark:text-zinc-500 text-sm">
           Chances are {MathRoundList(chances, 1).join(" | ")} <br />
-        </li>
-        <li className="text-zinc-300 text-sm">
+        </li> */}
+        <li className="text-zinc-300 dark:text-zinc-500 text-sm">
           Equalized biases are {MathRoundList(equalizedBiases, 2).join(" | ")}{" "}
           <button
             type="button"
-            className="rounded-sm py-1 px-2 bg-zinc-100 text-zinc-400 hover:text-zinc-500 hover:bg-zinc-200"
+            className="rounded-sm py-1 px-2 bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-800 text-zinc-400 dark:text-zinc-400 dark:hover:text-zinc-500 hover:text-zinc-500 hover:bg-zinc-300"
             onClick={(e) => {
               e.preventDefault();
               equalizedBiases.forEach((bias, biasIndex) => {
@@ -60,13 +62,15 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
           </button>
         </li>
       </ul>
-      Bets are {MathRoundList(betsToTake, 2).join(" | ")} <br />
-      {profits.map((profit, winnerIndex) => (
-        <Fragment key={winnerIndex}>
-          Profit if winner is {winnerIndex}: {MathRound(profit, 2)}
-          <br />
-        </Fragment>
-      ))}
+      <p className="mb-3 font-light text-zinc-500 dark:text-zinc-400">
+        Bets are {MathRoundList(betsToTake, 2).join(" | ")} <br />
+        {profits.map((profit, winnerIndex) => (
+          <Fragment key={winnerIndex}>
+            Profit if winner is {winnerIndex}: {MathRound(profit, 2)}
+            <br />
+          </Fragment>
+        ))}
+      </p>
     </div>
   );
 }

@@ -8,8 +8,7 @@
     --accent-color-light: 85 204 255;
   }
   body {
-    @apply text-zinc-900;
-    font-family: "Sora", sans-serif;
+    @apply text-zinc-900 bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200;
   }
 }
 @layer components {

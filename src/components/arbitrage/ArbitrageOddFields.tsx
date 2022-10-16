@@ -60,7 +60,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
                   {providedOddFields.length > 2 && (
                     <button
                       type="button"
-                      className="block absolute right-0 top-0 h-full px-2 text-zinc-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
+                      className="block absolute right-0 top-0 h-full px-2 text-zinc-300 border border-transparent hover:text-rose-500 hover:bg-rose-500/10 rounded-md hover:border-rose-500"
                       onClick={(e) => {
                         e.preventDefault();
                         const currentBiases = getValues("biasConfig");
@@ -100,7 +100,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
       </div>
       <button
         type="button"
-        className="block ml-2 top-0 p-2 h-f text-zinc-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
+        className="block ml-2 top-0 p-2 h-f text-zinc-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-500/10 rounded-md hover:border-emerald-500"
         onClick={(e) => {
           e.preventDefault();
           const currentBiases = getValues("biasConfig");
