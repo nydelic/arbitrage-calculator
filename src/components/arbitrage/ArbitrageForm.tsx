@@ -7,7 +7,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 interface ArbitrageFormProps {}
 
 function ArbitrageForm({}: ArbitrageFormProps) {
-  const { control, register, watch } = useArbitrageFormContext();
+  const { control, register, watch, getValues } = useArbitrageFormContext();
   const {
     fields: providedOddsFields,
     append,
@@ -68,8 +68,8 @@ function ArbitrageForm({}: ArbitrageFormProps) {
             className="text-sm my-1 text-zinc-300 border border-transparent hover:text-emerald-500 hover:underline -mb-2 inline-flex items-center"
             onClick={(e) => {
               e.preventDefault();
-              const lastProvider =
-                providedOddsFields[providedOddsFields.length - 1];
+              const allProviders = getValues("providedOdds");
+              const lastProvider = allProviders[allProviders.length - 1];
 
               append({ odds: [...lastProvider.odds] });
             }}
