@@ -61,7 +61,6 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
                         .replace(/  +/g, " ")
                         .trim();
                       const numericValues = removedDuplicateSpaces.split(" ");
-                      console.log(numericValues);
 
                       if (numericValues.length) {
                         if (numericValues.length === 1) {
