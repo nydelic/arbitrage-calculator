@@ -30,7 +30,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
   });
   return (
     <div className="relative flex">
-      <div className="overflow-auto w-full">
+      <div className="overflow-hidden w-full">
         <div className="flex flex-wrap -m-1">
           {providedOddFields.map((providedOddField, oIndex) => (
             <div
@@ -48,6 +48,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
                         required: "This value is required and cannot be empty",
                       }
                     )}
+                    min="0"
                     type="number"
                     placeholder="enter odd"
                   />

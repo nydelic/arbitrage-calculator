@@ -12,10 +12,10 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Nydelic</title>
+        <title>Arbitrage calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="mx-auto max-w-2xl py-10">
+      <div className="mx-auto max-w-2xl py-10 px-8">
         <FormProvider {...arbitrageForm}>
           <ArbitrageForm />
           <ArbitrageCalculationsErrorBoundary>

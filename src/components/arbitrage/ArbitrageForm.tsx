@@ -25,6 +25,7 @@ function ArbitrageForm({}: ArbitrageFormProps) {
 
   return (
     <form className="mb-4">
+      <h1 className="text-center text-3xl">Arbitrage calculator</h1>
       <div className="mb-4">
         <Input
           label="Budget"
