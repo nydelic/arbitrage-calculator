@@ -7,20 +7,16 @@ interface ArbitrageCalculationsProps {}
 
 function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
   const { watch } = useArbitrageFormContext();
-  const [providedOdds, budget] = watch(["providedOdds", "budget"]);
-
-  // const BIAS_CONFIG = undefined;
-  const BIAS_CONFIG = [1, 1, 1];
-
-  // dataset
-
-  // sim config
-  const SIMULATION_RUNS = 10;
-  const START_BALANCE = 1000;
+  const [providedOdds, budget, enableBias, biasConfig] = watch([
+    "providedOdds",
+    "budget",
+    "enableBias",
+    "biasConfig",
+  ]);
 
   const arbCalculations = calculateArbitrage({
-    oddsDataset: providedOdds,
-    biasConfig: BIAS_CONFIG,
+    oddsDataset: providedOdds.map((providedOdd) => providedOdd.odds),
+    biasConfig: enableBias ? biasConfig : undefined,
     budget: budget,
   });
   const {
@@ -34,11 +30,18 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
 
   return (
     <div>
-      Available margin is {MathRound(availableWinMargin, 2)} <br />
-      Best odds are {MathRoundList(bestOdds, 1).join(" | ")} <br />
-      Chances are {MathRoundList(chances, 1).join(" | ")} <br />
-      Equalized biases are {MathRoundList(equalizedBiases, 2).join(" | ")}{" "}
-      <br />
+      <p className="text-zinc-300 text-sm">
+        Available margin is {MathRound(availableWinMargin, 2)}
+      </p>
+      <p className="text-zinc-300 text-sm">
+        Best odds are {MathRoundList(bestOdds, 1).join(" | ")} <br />
+      </p>
+      <p className="text-zinc-300 text-sm">
+        Chances are {MathRoundList(chances, 1).join(" | ")} <br />
+      </p>
+      <p className="text-zinc-300 text-sm">
+        Equalized biases are {MathRoundList(equalizedBiases, 2).join(" | ")}{" "}
+      </p>
       Bets are {MathRoundList(betsToTake, 2).join(" | ")} <br />
       {profits.map((profit, winnerIndex) => (
         <Fragment key={winnerIndex}>

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Controller, useFieldArray } from "react-hook-form";
 import { useArbitrageFormContext } from "../hooks/useArbitrageForm";
-import { ErrorMessage } from "@hookform/error-message";
+import ArbitrageOddFields from "./ArbitrageOddFields";
 
 interface ArbitrageFormProps {}
 
@@ -43,29 +43,17 @@ function ArbitrageForm({}: ArbitrageFormProps) {
             name={`providedOdds.${pIndex}`}
             render={({ field }) => (
               <>
-                {field.value.map((odd, oIndex) => {
-                  return (
-                    <div
-                      key={`${providedOddsField.id}-${oIndex}`}
-                      className="inline-flex flex-col"
-                    >
-                      <input
-                        {...register(`providedOdds.${pIndex}.${oIndex}`, {
-                          valueAsNumber: true,
-                          required:
-                            "This value is required and cannot be empty",
-                        })}
-                        type="number"
-                        placeholder="enter odd"
-                      />
-                      <ErrorMessage
-                        errors={errors}
-                        name={`providedOdds.${pIndex}.${oIndex}`}
-                        render={({ message }) => <span>{message}</span>}
-                      />
-                    </div>
-                  );
-                })}
+                <button
+                  className=""
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    prepend({ odds: [1, 2, 3] });
+                  }}
+                >
+                  Prepend
+                </button>
+                <ArbitrageOddFields providerIndex={pIndex} />
               </>
             )}
           />

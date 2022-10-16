@@ -6,16 +6,14 @@
   :root {
     --accent-color: 0 145 255;
     --accent-color-light: 85 204 255;
-
-    --shade-900: 33 38 39;
   }
   body {
-    @apply text-shade-900;
+    @apply text-zinc-900;
     font-family: "Sora", sans-serif;
   }
 }
 @layer components {
   input {
-    @apply border rounded-md mb-4 py-1 px-3;
+    @apply border rounded-md py-1 px-3;
   }
 }
