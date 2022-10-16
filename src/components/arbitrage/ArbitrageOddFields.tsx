@@ -30,7 +30,7 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
   });
   return (
     <div className="relative flex">
-      <div className="overflow-hidden w-full">
+      <div className="w-full">
         <div
           className="grid gap-2"
           style={{
