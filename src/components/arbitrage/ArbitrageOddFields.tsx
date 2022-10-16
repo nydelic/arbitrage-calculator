@@ -6,13 +6,9 @@ import Input from "../Input";
 
 interface ArbitrageOddFieldsProps {
   providerIndex: number;
-  // onRemoveAll: () => void;
 }
 
-function ArbitrageOddFields({
-  // onRemoveAll,
-  providerIndex,
-}: ArbitrageOddFieldsProps) {
+function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
   const {
     control,
     register,
@@ -53,16 +49,18 @@ function ArbitrageOddFields({
                     type="number"
                     placeholder="enter odd"
                   />
-                  <button
-                    type="button"
-                    className="block absolute right-0 top-0 h-full px-2 text-slate-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      remove(oIndex);
-                    }}
-                  >
-                    <AiOutlineCloseCircle />
-                  </button>
+                  {providedOddFields.length > 2 && (
+                    <button
+                      type="button"
+                      className="block absolute right-0 top-0 h-full px-2 text-zinc-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        remove(oIndex);
+                      }}
+                    >
+                      <AiOutlineCloseCircle />
+                    </button>
+                  )}
                 </div>
                 <ErrorMessage
                   errors={errors}
@@ -78,7 +76,7 @@ function ArbitrageOddFields({
       </div>
       <button
         type="button"
-        className="block ml-2 top-0 p-2 h-f text-slate-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
+        className="block ml-2 top-0 p-2 h-f text-zinc-300 border border-transparent hover:text-emerald-500 hover:bg-emerald-100 rounded-md hover:border-emerald-200"
         onClick={(e) => {
           e.preventDefault();
           append(1);
@@ -86,18 +84,6 @@ function ArbitrageOddFields({
       >
         <AiOutlinePlusCircle />
       </button>
-      {/* <div className="flex flex-col">
-        <button
-          type="button"
-          className="block ml-2 top-0 p-2 h-f text-slate-300 border border-transparent hover:text-rose-500 hover:bg-rose-100 rounded-md hover:border-rose-200"
-          onClick={(e) => {
-            e.preventDefault();
-            onRemoveAll();
-          }}
-        >
-          <AiOutlineCloseCircle />
-        </button>
-      </div> */}
     </div>
   );
 }

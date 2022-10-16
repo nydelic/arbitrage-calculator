@@ -1,9 +1,8 @@
-import { Fragment } from "react";
 import { Controller, useFieldArray } from "react-hook-form";
 import { useArbitrageFormContext } from "../../hooks/useArbitrageForm";
 import Input from "../Input";
 import ArbitrageOddFields from "./ArbitrageOddFields";
-import { AiOutlineCloseCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 interface ArbitrageFormProps {}
 
@@ -35,6 +34,7 @@ function ArbitrageForm({}: ArbitrageFormProps) {
             valueAsNumber: true,
             required: "This value is required and cannot be empty",
           })}
+          min="0"
           type="number"
           placeholder="enter budget"
         />
@@ -55,13 +55,25 @@ function ArbitrageForm({}: ArbitrageFormProps) {
         <div className="text-center">
           <button
             type="button"
-            className="text-sm my-1 text-slate-300 border border-transparent hover:text-emerald-500 hover:underline -mb-2"
+            className="text-sm my-1 text-zinc-300 disabled:text-zinc-200 border border-transparent hover:[&:not(:disabled)]:text-rose-500 hover:[&:not(:disabled)]:underline -mb-2 inline-flex items-center mr-2"
+            onClick={(e) => {
+              e.preventDefault();
+              remove(providedOddsFields.length - 1);
+            }}
+            disabled={providedOddsFields.length <= 1}
+          >
+            <AiOutlinePlusCircle className="mr-1" /> Remove provider
+          </button>
+
+          <button
+            type="button"
+            className="text-sm my-1 text-zinc-300 border border-transparent hover:text-emerald-500 hover:underline -mb-2 inline-flex items-center"
             onClick={(e) => {
               e.preventDefault();
               append({ odds: [1, 2, 3] });
             }}
           >
-            Add provider
+            <AiOutlinePlusCircle className="mr-1" /> Add provider
           </button>
         </div>
       </div>

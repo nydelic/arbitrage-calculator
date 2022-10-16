@@ -16,8 +16,8 @@ function useArbitrageForm() {
     criteriaMode: "all",
     mode: "all",
     defaultValues: {
-      providedOdds: [{ odds: [3, 5, 99] }],
-      budget: 1000,
+      providedOdds: [{ odds: [3, 3, 3] }],
+      budget: 100,
       enableBias: false,
       biasConfig: [1, 1, 1],
     },
