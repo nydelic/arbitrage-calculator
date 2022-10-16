@@ -6,7 +6,7 @@ import { useArbitrageFormContext } from "../../hooks/useArbitrageForm";
 interface ArbitrageCalculationsProps {}
 
 function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
-  const { watch } = useArbitrageFormContext();
+  const { watch, setValue } = useArbitrageFormContext();
   const [providedOdds, budget, enableBias, biasConfig] = watch([
     "providedOdds",
     "budget",
@@ -41,6 +41,21 @@ function ArbitrageCalculations({}: ArbitrageCalculationsProps) {
       </p>
       <p className="text-zinc-300 text-sm">
         Equalized biases are {MathRoundList(equalizedBiases, 2).join(" | ")}{" "}
+        <button
+          type="button"
+          className="rounded-sm py-1 px-2 bg-zinc-100 text-zinc-400 hover:text-zinc-500 hover:bg-zinc-200"
+          onClick={(e) => {
+            e.preventDefault();
+            equalizedBiases.forEach((bias, biasIndex) => {
+              setValue(`biasConfig.${biasIndex}`, Math.round(bias * 100), {
+                shouldDirty: true,
+                shouldValidate: true,
+              });
+            });
+          }}
+        >
+          → Load equalized biases
+        </button>
       </p>
       Bets are {MathRoundList(betsToTake, 2).join(" | ")} <br />
       {profits.map((profit, winnerIndex) => (
