@@ -45,7 +45,50 @@ function ArbitrageOddFields({ providerIndex }: ArbitrageOddFieldsProps) {
               <div className="flex flex-col">
                 <div className="relative">
                   <Input
-                    // className="[&_input]:max-w-[5rem]"
+                    onPaste={(e) => {
+                      // Stop data actually being pasted into div
+                      e.stopPropagation();
+                      e.preventDefault();
+
+                      // Get pasted data via clipboard API
+                      const clipboardData = e.clipboardData;
+                      const pastedData = clipboardData.getData("Text");
+                      const numericString = pastedData.replaceAll(
+                        /[^0-9\.]/g,
+                        " "
+                      );
+                      const removedDuplicateSpaces = numericString
+                        .replace(/  +/g, " ")
+                        .trim();
+                      const numericValues = removedDuplicateSpaces.split(" ");
+                      console.log(numericValues);
+
+                      if (numericValues.length) {
+                        if (numericValues.length === 1) {
+                          const valueToPaste = numericValues[0];
+
+                          setValue(
+                            `providedOdds.${providerIndex}.odds.${oIndex}`,
+                            Math.max(1, parseFloat(valueToPaste) || 0),
+                            { shouldDirty: true, shouldValidate: true }
+                          );
+                        } else {
+                          numericValues.forEach((valueToPaste, index) => {
+                            if (
+                              getValues(
+                                `providedOdds.${providerIndex}.odds.${index}`
+                              ) !== undefined
+                            ) {
+                              setValue(
+                                `providedOdds.${providerIndex}.odds.${index}`,
+                                Math.max(1, parseFloat(valueToPaste) || 0),
+                                { shouldDirty: true, shouldValidate: true }
+                              );
+                            }
+                          });
+                        }
+                      }
+                    }}
                     {...register(
                       `providedOdds.${providerIndex}.odds.${oIndex}`,
                       {
