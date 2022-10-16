@@ -7,23 +7,21 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 interface ArbitrageFormProps {}
 
 function ArbitrageForm({}: ArbitrageFormProps) {
-  const {
-    control,
-    register,
-    formState: { errors },
-  } = useArbitrageFormContext();
+  const { control, register, watch } = useArbitrageFormContext();
   const {
     fields: providedOddsFields,
     append,
-    prepend,
+    // prepend,
     remove,
-    swap,
-    move,
-    insert,
+    // swap,
+    // move,
+    // insert,
   } = useFieldArray({
     control,
     name: "providedOdds",
   });
+
+  const enableBias = watch("enableBias");
 
   return (
     <form className="mb-4">
@@ -39,7 +37,7 @@ function ArbitrageForm({}: ArbitrageFormProps) {
           placeholder="enter budget"
         />
       </div>
-      <label>Odds</label>
+      <label>Provider odds</label>
       <div className="rounded-md p-2 border mb-4">
         <div>
           {providedOddsFields.map((providedOddsField, pIndex) => (
@@ -77,6 +75,37 @@ function ArbitrageForm({}: ArbitrageFormProps) {
           </button>
         </div>
       </div>
+      <div>
+        <input
+          id="enableBias"
+          className="mr-1 cursor-pointer"
+          type="checkbox"
+          {...register("enableBias")}
+        />
+        <label htmlFor="enableBias" className="select-none cursor-pointer">
+          Bias
+        </label>
+      </div>
+      <Controller
+        control={control}
+        name={`biasConfig`}
+        render={({ field }) => (
+          <div className={enableBias ? "" : "opacity-5"}>
+            {field.value.map((biasField, bIndex) => (
+              <Input
+                key={bIndex}
+                {...register(`biasConfig.${bIndex}`, {
+                  valueAsNumber: true,
+                  required: "This value is required and cannot be empty",
+                })}
+                min="0"
+                type="range"
+                max="100"
+              />
+            ))}
+          </div>
+        )}
+      />
     </form>
   );
 }

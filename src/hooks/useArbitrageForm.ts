@@ -19,7 +19,7 @@ function useArbitrageForm() {
       providedOdds: [{ odds: [3, 3, 3] }],
       budget: 100,
       enableBias: false,
-      biasConfig: [1, 1, 1],
+      biasConfig: [100, 100, 100],
     },
   });
 
