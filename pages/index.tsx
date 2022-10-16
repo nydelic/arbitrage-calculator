@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { FormProvider } from "react-hook-form";
-import ArbitrageCalculations from "../src/components/ArbitrageCalculations";
-import ArbitrageCalculationsErrorBoundary from "../src/components/ArbitrageCalculationsErrorBoundary";
-import ArbitrageForm from "../src/components/ArbitrageForm";
+import ArbitrageCalculations from "../src/components/arbitrage/ArbitrageCalculations";
+import ArbitrageCalculationsErrorBoundary from "../src/components/arbitrage/ArbitrageCalculationsErrorBoundary";
+import ArbitrageForm from "../src/components/arbitrage/ArbitrageForm";
 import useArbitrageForm from "../src/hooks/useArbitrageForm";
 
 const Home: NextPage = () => {

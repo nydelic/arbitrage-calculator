@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Controller, useFieldArray } from "react-hook-form";
-import { useArbitrageFormContext } from "../hooks/useArbitrageForm";
+import { useArbitrageFormContext } from "../../hooks/useArbitrageForm";
+import Input from "../Input";
 import ArbitrageOddFields from "./ArbitrageOddFields";
 
 interface ArbitrageFormProps {}
@@ -25,9 +26,10 @@ function ArbitrageForm({}: ArbitrageFormProps) {
   });
 
   return (
-    <form>
+    <form className="mb-4">
       <div>
-        <input
+        <Input
+          label="Budget"
           {...register("budget", {
             valueAsNumber: true,
             required: "This value is required and cannot be empty",
@@ -41,7 +43,7 @@ function ArbitrageForm({}: ArbitrageFormProps) {
           <Controller
             control={control}
             name={`providedOdds.${pIndex}`}
-            render={({ field }) => (
+            render={() => (
               <>
                 <button
                   className=""

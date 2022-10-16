@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { calculateArbitrage } from "../arbitrage";
-import { MathRound, MathRoundList } from "../arbitrage/utils";
-import { useArbitrageFormContext } from "../hooks/useArbitrageForm";
+import { calculateArbitrage } from "../../arbitrage";
+import { MathRound, MathRoundList } from "../../arbitrage/utils";
+import { useArbitrageFormContext } from "../../hooks/useArbitrageForm";
 
 interface ArbitrageCalculationsProps {}
 
